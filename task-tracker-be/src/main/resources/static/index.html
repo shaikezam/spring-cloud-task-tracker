@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.js"></script>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-route.js"></script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+<body>
+
+	<div ng-app="myApp" ng-controller="customersCtrl">
+		<div class="container">
+			<div class="page-header">
+				<h1>Task Tracker</h1>
+			</div>
+			<form ng-submit="submit(task)">
+				<div class="form-group">
+					<label for="pwd">Task Title:</label> <input ng-model="task.title"
+						class="form-control" id="title" placeholder="Enter Task Title"
+						name="title">
+				</div>
+				<div class="form-group">
+					<label for="pwd">Task Description:</label> <input
+						ng-model="task.description" class="form-control" id="description"
+						placeholder="Enter Task Description" name="description">
+				</div>
+				<button type="submit" class="btn btn-primary">Create New
+					Task</button>
+			</form>
+			<hr>
+			<table class="table table-bordered">
+				<thead>
+					<tr>
+						<th>Id</th>
+						<th>Title</th>
+						<th>Description</th>
+					</tr>
+				</thead>
+				</tbody>
+				<tr ng-repeat="task in tasks">
+					<td><button type="button" class="btn btn-default btn-xs"
+							data-toggle="modal" data-target="#myModal"
+							ng-click="showTask(task)">{{task.id}}</button></td>
+					<td>{{ task.title }}</td>
+					<td>{{ task.description }}</td>
+
+				</tr>
+				</tbody>
+			</table>
+		</div>
+		<!-- Modal -->
+		<div class="modal fade" id="myModal" role="dialog">
+			<div class="modal-dialog">
+
+				<!-- Modal content-->
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal">&times;</button>
+						<h4 class="modal-title">Modify task {{id}}</h4>
+					</div>
+					<div class="modal-body">
+						 <div class="form-group">
+						      <label for="title">Task Title:</label>
+						      <input type="text" class="form-control" id="title" placeholder="Enter title" name="title" ng-model="title">
+						 </div>
+						    <div class="form-group">
+						      <label for="description">Task Description:</label>
+						      <input type="text" class="form-control" id="description" placeholder="Enter description" name="description" ng-model ="description">
+					    </div>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+						<button type="button" class="btn btn-primary" data-dismiss="modal" ng-click="updateTask(id, title, description)">Update</button>
+						<button type="button" class="btn btn-danger" data-dismiss="modal" ng-click="deleteTask(id)">Delete</button>
+					</div>
+				</div>
+
+			</div>
+		</div>
+	</div>
+
+	<script src="/js/script.js"></script>
+</body>
+</html>

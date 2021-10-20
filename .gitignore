@@ -1,0 +1,7 @@
+task-tracker-be/.classpath
+task-tracker-be/.project
+task-tracker-be/.settings
+task-tracker-be/target
+task-tracker-be/build/
+task-tracker-be/.gradle/
+task-tracker-be/.idea

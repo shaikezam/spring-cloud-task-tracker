@@ -1,0 +1,5 @@
+FROM node:12.18.1
+COPY . /app
+EXPOSE 4000
+WORKDIR /app
+CMD [ "node", "server.js" ]

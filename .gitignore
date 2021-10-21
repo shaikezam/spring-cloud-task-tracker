@@ -5,4 +5,4 @@ task-tracker-be/target
 task-tracker-be/build/
 task-tracker-be/.gradle/
 task-tracker-be/.idea
-./.idea
+/.idea

@@ -1,0 +1,22 @@
+#### Docker ####
+
+Build image:
+
+* `docker build -t task-tracker-ui .`
+
+Create Container
+
+* `docker run -d -p 8000:4000 -h task-tracker-ui --name task-tracker-ui task-tracker-ui`
+
+Attack to network
+
+* `docker network create myNetwork`
+* `docker network connect myNetwork task-tracker-ui`
+
+Delete Continer
+
+* `docker container rm -f task-tracker-ui`
+
+Delete image
+
+* `docker rmi task-tracker-ui`

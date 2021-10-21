@@ -2,16 +2,21 @@
 
 Build image:
 
-* `docker build -t task-tracker-gateway .`
+* `docker build -t task-tracker-api-gateway .`
 
 Create Container
 
-* `docker run -d --name task-tracker-gateway task-tracker-gateway`
+* `docker run -d  -h task-tracker-api-gateway --name task-tracker-api-gateway task-tracker-api-gateway`
+
+Attack to network
+
+* `docker network create myNetwork`
+* `docker network connect myNetwork task-tracker-api-gateway`
 
 Delete Continer
 
-* `docker container rm -f task-tracker-gateway`
+* `docker container rm -f task-tracker-api-gateway`
 
 Delete image
 
-* `docker rmi task-tracker-gateway`
+* `docker rmi -f task-tracker-api-gateway`

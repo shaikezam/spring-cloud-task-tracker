@@ -6,7 +6,12 @@ Build image:
 
 Create Container
 
-* `docker run -d -p 4001:9001 --name task-tracker-service-discovery task-tracker-service-discovery`
+* `docker run -d -p 4001:9001 -h task-tracker-service-discovery --name task-tracker-service-discovery task-tracker-service-discovery`
+
+Attack to network
+
+* `docker network create myNetwork`
+* `docker network connect myNetwork task-tracker-service-discovery`
 
 Delete Continer
 
@@ -14,4 +19,4 @@ Delete Continer
 
 Delete image
 
-* `docker rmi task-tracker-service-discovery`
+* `docker rmi -f task-tracker-service-discovery`

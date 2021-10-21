@@ -19,7 +19,7 @@ public class ApiGatewayApplication {
     public RouteLocator gatewayRoutes(RouteLocatorBuilder builder) {
         return builder.routes()
                 .route(r -> r.path("/tasks-app/api/**")
-                        .uri("lb://task-tracker-application"))
+                        .uri("lb://task-tracker-app"))
                 .build();
     }
 

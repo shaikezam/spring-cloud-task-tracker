@@ -1,0 +1,10 @@
+server:
+  port: 9000
+spring:
+  application:
+    name: task-tracker-api-gateway
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://task-tracker-service-discovery:9001/eureka

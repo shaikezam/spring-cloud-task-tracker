@@ -3,4 +3,4 @@ RUN apk add --no-cache openjdk11
 RUN apk --no-cache add curl
 COPY target/*.jar /app/task-tracker-app.jar
 WORKDIR /app
-CMD ["java", "-jar", "task-tracker-app.jar"]
+ENTRYPOINT ["java","-Dspring.profiles.active=prod","-jar","task-tracker-app.jar"]

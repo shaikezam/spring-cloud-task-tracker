@@ -6,7 +6,12 @@ Build image:
 
 Create Container
 
-* `docker run -d --name task-tracker-app task-tracker-app`
+* `docker run -d -h task-tracker-app --name task-tracker-app task-tracker-app`
+
+Attack to network
+
+* `docker network create myNetwork`
+* `docker network connect myNetwork task-tracker-app`
 
 Delete Continer
 

@@ -1,0 +1,31 @@
+version: "3.9"
+services:
+  task-tracker-ui:
+    container_name: task-tracker-ui
+    build: /task-tracker-ui
+    ports:
+      - "8000:4000"
+    networks:
+      - task-tracker-network
+  task-tracker-service-discovery:
+    container_name: task-tracker-service-discovery
+    build: /task-tracker-service-discovery
+    ports:
+      - "8001:9001"
+    networks:
+      - task-tracker-network
+  task-tracker-api-gateway:
+    container_name: task-tracker-api-gateway
+    build: /task-tracker-api-gateway
+    networks:
+      - task-tracker-network
+  task-tracker-app:
+    container_name: task-tracker-app
+    build: /task-tracker-be
+    networks:
+      - task-tracker-network
+
+networks:
+  task-tracker-network:
+    external: false
+    name: task-tracker-network

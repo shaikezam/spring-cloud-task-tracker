@@ -1,17 +1,17 @@
 #### Docker ####
 
-Build image:
+Run docker compose:
 
-* `docker build -t task-tracker-ui .`
+* `docker-compose up`
 
-Create Container
+Stop All Containers
 
-* `docker run -d -p 8000:4000 --name task-tracker-ui task-tracker-ui`
+* `docker stop $(docker ps -aq)`
 
-Delete Continer
+Delete All Containers
 
-* `docker container rm -f task-tracker-ui`
+* `docker rm $(docker ps -aq)`
 
-Delete image
+Delete All Images
 
-* `docker rmi task-tracker-ui`
+* `docker rmi $(docker images -q)`

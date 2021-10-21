@@ -1,0 +1,11 @@
+server:
+  port: 9002
+
+spring:
+  application:
+    name: task-tracker-application
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:9001/eureka

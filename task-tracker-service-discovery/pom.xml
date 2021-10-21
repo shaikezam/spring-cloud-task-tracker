@@ -47,6 +47,7 @@
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
 		</plugins>
+		<finalName>task-tracker-service-discovery</finalName>
 	</build>
 
 </project>

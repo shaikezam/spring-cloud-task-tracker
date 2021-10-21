@@ -11,19 +11,16 @@ import org.springframework.context.annotation.Bean;
 @SpringBootApplication
 public class ApiGatewayApplication {
 
-	public static void main(String[] args) {
-		SpringApplication.run(ApiGatewayApplication.class, args);
-	}
+    public static void main(String[] args) {
+        SpringApplication.run(ApiGatewayApplication.class, args);
+    }
 
-	@Bean
-	public RouteLocator gatewayRoutes(RouteLocatorBuilder builder) {
-		return builder.routes()
-				.route(r -> r.path("/employee/**")
-						.uri("lb://FIRST-SERVICE"))
-
-				.route(r -> r.path("/consumer/**")
-						.uri("lb://SECOND-SERVICE"))
-				.build();
-	}
+    @Bean
+    public RouteLocator gatewayRoutes(RouteLocatorBuilder builder) {
+        return builder.routes()
+                .route(r -> r.path("/tasks-app/api/**")
+                        .uri("lb://task-tracker-application"))
+                .build();
+    }
 
 }

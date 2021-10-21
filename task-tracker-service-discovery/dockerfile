@@ -1,0 +1,6 @@
+FROM alpine:edge
+RUN apk add --no-cache openjdk11
+RUN apk --no-cache add curl
+COPY target/*.jar /app/task-tracker-service-discovery.jar
+WORKDIR /app
+CMD ["java", "-jar", "task-tracker-service-discovery.jar"]

@@ -2,16 +2,16 @@
 
 Build image:
 
-* `docker build -t task-tracker-ui .`
+* `docker build -t task-tracker-gateway .`
 
 Create Container
 
-* `docker run -d -p 8000:4000 --name task-tracker-ui task-tracker-ui`
+* `docker run -d --name task-tracker-gateway task-tracker-gateway`
 
 Delete Continer
 
-* `docker container rm -f task-tracker-ui`
+* `docker container rm -f task-tracker-gateway`
 
 Delete image
 
-* `docker rmi task-tracker-ui`
+* `docker rmi task-tracker-gateway`

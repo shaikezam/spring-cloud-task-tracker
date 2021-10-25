@@ -1,10 +1,12 @@
 package tasktracker.tasktrackerapplication.controller;
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.server.ResponseStatusException;
 import tasktracker.tasktrackerapplication.model.Task;
+import tasktracker.tasktrackerapplication.repository.ITaskRepository;
 
 import java.util.List;
 
@@ -12,10 +14,32 @@ import java.util.List;
 @RequestMapping(value = "/tasks-app/api/")
 public class TaskTrackerController {
 
+    @Autowired
+    private ITaskRepository taskRepository;
+
     @GetMapping("/tasks")
     @ResponseBody
     public List<Task> getAllTasks() {
-        return List.of(new Task("AAA", "aaa"),
-                new Task("BBB", "bbb"));
+        return taskRepository.findAll();
+    }
+
+    @PostMapping("/tasks")
+    public void createTask(@RequestBody Task task) {
+        taskRepository.save(task);
+    }
+
+    @GetMapping("/tasks/{id}")
+    public Task getTaskByID(@PathVariable int id) {
+        return taskRepository.findById(id).orElseThrow(() ->
+                new ResponseStatusException(
+                        HttpStatus.NOT_FOUND
+                ));
+    }
+
+    @PutMapping("/tasks/{id}")
+    public ResponseEntity<Object> updateTaskByID(@PathVariable int id, @RequestBody Task task) {
+        task.setId(id);
+        taskRepository.save(task);
+        return new ResponseEntity<>(id, null, HttpStatus.OK);
     }
 }

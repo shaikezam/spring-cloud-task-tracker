@@ -4,8 +4,17 @@ server:
 spring:
   application:
     name: task-tracker-application
+  data:
+    mongodb:
+      host: mongodb
+      port: 27017
+      database: task-tracker
+      username: root
+      authentication-database: admin
+      password: root
 
 eureka:
   client:
     serviceUrl:
       defaultZone: http://task-tracker-service-discovery:9001/eureka
+

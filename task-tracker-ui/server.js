@@ -1,8 +1,28 @@
 const http = require('http');
 const fs = require('fs');
 const request = require('request');
+var express = require('express');        // call express
+var app = express();                 // define our app using express
+var bodyParser = require('body-parser');
 
-const server = http.createServer((req, res) => {
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
+app.use(express.static(__dirname + '/public'))
+var port = process.env.PORT || 4000;
+
+var router = express.Router();
+
+router.get('/', function(req, res) {
+  res.sendfile(__dirname + "/index.html"); 
+});
+
+app.use('/api', router);
+
+app.listen(port);
+console.log('Magic happens on port ' + port);
+
+
+/*const server = http.createServer((req, res) => {
 
   if (req.url === "/webapi/tasks" && req.method === "GET") {
 
@@ -10,12 +30,30 @@ const server = http.createServer((req, res) => {
       if (err) {
         return console.log(err);
       } else {
-        res.writeHead(200, {'Content-Type': 'application/json'});
+        res.writeHead(200, { 'Content-Type': 'application/json' });
         res.write(JSON.stringify(body));
         res.end();
       }
 
     });
+
+  } else if (req.url === "/webapi/tasks" && req.method === "POST") {
+
+    let data = '';
+    req.on('data', chunk => {
+      data += chunk;
+    })
+    req.on('end', () => {
+      console.log(JSON.parse(data)); // 'Buy the milk'
+      res.end();
+      request.post({
+        headers: { 'content-type': 'application/json' },
+        url: 'http://task-tracker-api-gateway:9000/tasks-app/api/tasks/',
+        body: JSON.parse(data)
+      }, function (error, response, body) {
+        console.log(body);
+      });
+    })
 
   } else if (req.url === "/js/script.js" && req.method === "GET") {
     res.writeHead(200, { 'content-type': 'text/html' })
@@ -27,4 +65,4 @@ const server = http.createServer((req, res) => {
 
 })
 
-server.listen(process.env.PORT || 4000)
+server.listen(process.env.PORT || 4000)*/

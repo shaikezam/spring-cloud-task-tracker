@@ -4,6 +4,16 @@ server:
 spring:
   application:
     name: task-tracker-application
+  datasource:
+    url: jdbc:mariadb://task-tracker-db:3306/task-tracker-tasks
+    username: root
+    password: mypass
+    driver-class-name: org.mariadb.jdbc.Driver
+  jpa:
+    database-platform: org.hibernate.dialect.MariaDBDialect
+    generate-ddl: true
+    hibernate:
+      ddlAuto: create
 
 eureka:
   client:

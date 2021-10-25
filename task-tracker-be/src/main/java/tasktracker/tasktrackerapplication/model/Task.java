@@ -1,8 +1,13 @@
 package tasktracker.tasktrackerapplication.model;
 
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
+
+@Document("tasks")
 public class Task {
 
-    private int id = 3;
+    @Id
+    private int id;
     private String title;
     private String description;
 

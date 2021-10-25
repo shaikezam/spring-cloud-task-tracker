@@ -6,6 +6,8 @@
         "start": "node ./bin/www"
     },
     "dependencies": {
-        "request": "2.81.0"
+        "request": "2.81.0",
+        "body-parser": "~1.0.1",
+        "express": "~4.0.0"
     }
 }

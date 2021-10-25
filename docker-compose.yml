@@ -24,6 +24,15 @@ services:
     build: /task-tracker-be
     networks:
       - task-tracker-network
+  mongodb:
+    container_name: mongodb
+    image: mongo
+    restart: always
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: root
+    networks:
+      - task-tracker-network
 
 networks:
   task-tracker-network:

@@ -10,8 +10,8 @@ const server = http.createServer((req, res) => {
       if (err) {
         return console.log(err);
       } else {
-        res.writeHead(200, {'Content-Type': 'text/plain'});
-        res.write(body);
+        res.writeHead(200, {'Content-Type': 'application/json'});
+        res.write(JSON.stringify(body));
         res.end();
       }
 

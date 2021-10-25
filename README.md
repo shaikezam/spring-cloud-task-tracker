@@ -15,3 +15,7 @@ Delete All Containers
 Delete All Images
 
 * `docker rmi $(docker images -q)`
+
+Run the app
+
+* `http://localhost:4000`

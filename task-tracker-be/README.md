@@ -2,21 +2,21 @@
 
 Build image:
 
-* `docker build -t task-tracker-app .`
+* `docker build -t task-tracker-application .`
 
 Create Container
 
-* `docker run -d -h task-tracker-app --name task-tracker-app task-tracker-app`
+* `docker run -d -h task-tracker-application --name task-tracker-application task-tracker-application`
 
 Attack to network
 
 * `docker network create myNetwork`
-* `docker network connect myNetwork task-tracker-app`
+* `docker network connect myNetwork task-tracker-application`
 
 Delete Continer
 
-* `docker container rm -f task-tracker-app`
+* `docker container rm -f task-tracker-application`
 
 Delete image
 
-* `docker rmi task-tracker-app`
+* `docker rmi task-tracker-application`

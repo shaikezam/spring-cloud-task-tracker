@@ -52,7 +52,7 @@
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
 		</plugins>
-		<finalName>task-tracker-app</finalName>
+		<finalName>task-tracker-application</finalName>
 	</build>
 
 </project>

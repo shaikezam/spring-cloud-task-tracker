@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping(value = "/tasks-app/api")
+@RequestMapping(value = "/tasks-app/api/")
 public class TaskTrackerController {
 
     @GetMapping("/tasks")

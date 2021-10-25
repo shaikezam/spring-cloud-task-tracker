@@ -3,7 +3,7 @@ server:
 
 spring:
   application:
-    name: task-tracker-app
+    name: task-tracker-application
 
 eureka:
   client:

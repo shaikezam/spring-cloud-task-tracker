@@ -1,6 +1,6 @@
 FROM alpine:edge
 RUN apk add --no-cache openjdk11
 RUN apk --no-cache add curl
-COPY target/*.jar /app/task-tracker-app.jar
+COPY target/*.jar /app/task-tracker-application.jar
 WORKDIR /app
-ENTRYPOINT ["java","-Dspring.profiles.active=prod","-jar","task-tracker-app.jar"]
+ENTRYPOINT ["java","-Dspring.profiles.active=prod","-jar","task-tracker-application.jar"]

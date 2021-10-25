@@ -19,8 +19,8 @@ services:
     build: /task-tracker-api-gateway
     networks:
       - task-tracker-network
-  task-tracker-app:
-    container_name: task-tracker-app
+  task-tracker-application:
+    container_name: task-tracker-application
     build: /task-tracker-be
     networks:
       - task-tracker-network

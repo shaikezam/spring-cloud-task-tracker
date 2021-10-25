@@ -6,7 +6,7 @@ Build image:
 
 Create Container
 
-* `docker run -d  -h task-tracker-api-gateway --name task-tracker-api-gateway task-tracker-api-gateway`
+* `docker run -d -p 8002:9000 -h task-tracker-api-gateway --name task-tracker-api-gateway task-tracker-api-gateway`
 
 Attack to network
 

@@ -12,11 +12,37 @@ var port = process.env.PORT || 4000;
 
 var router = express.Router();
 
-router.get('/', function(req, res) {
-  res.sendfile(__dirname + "/index.html"); 
+router.get('/', function (req, res) {
+  res.sendFile(__dirname + "/index.html");
 });
 
-app.use('/api', router);
+router.get('/webapi/tasks', function (req, res) {
+  request('http://task-tracker-api-gateway:9000/tasks-app/api/tasks/', { json: true }, (err, response, body) => {
+    console.log(err);
+    console.log(body);
+    if (err) {
+      res.send(err);
+    } else {
+      res.json(body);
+    }
+  });
+});
+
+router.post('/webapi/tasks', function (req, res) {
+  console.log("Send task: " + JSON.stringify(req.body));
+  request('http://task-tracker-api-gateway:9000/tasks-app/api/tasks/', { json: true }, (err, response, body) => {
+    request.post({
+      headers: { 'content-type': 'application/json' },
+      url: 'http://task-tracker-api-gateway:9000/tasks-app/api/tasks/',
+      body: JSON.stringify(req.body)
+    }, function (error, response, body) {
+      res.status(202);
+      res.send();
+    });
+  });
+});
+
+app.use('/', router);
 
 app.listen(port);
 console.log('Magic happens on port ' + port);

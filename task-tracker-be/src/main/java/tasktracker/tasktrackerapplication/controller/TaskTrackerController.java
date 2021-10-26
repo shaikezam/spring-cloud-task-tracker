@@ -1,5 +1,6 @@
 package tasktracker.tasktrackerapplication.controller;
 
+import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -8,6 +9,7 @@ import org.springframework.web.server.ResponseStatusException;
 import tasktracker.tasktrackerapplication.model.Task;
 import tasktracker.tasktrackerapplication.repository.ITaskRepository;
 
+import java.math.BigInteger;
 import java.util.List;
 
 @RestController
@@ -25,7 +27,7 @@ public class TaskTrackerController {
 
     @PostMapping("/tasks")
     public void createTask(@RequestBody Task task) {
-        taskRepository.save(task);
+        taskRepository.insert(task);
     }
 
     @GetMapping("/tasks/{id}")
@@ -37,7 +39,7 @@ public class TaskTrackerController {
     }
 
     @PutMapping("/tasks/{id}")
-    public ResponseEntity<Object> updateTaskByID(@PathVariable int id, @RequestBody Task task) {
+    public ResponseEntity<Object> updateTaskByID(@PathVariable String id, @RequestBody Task task) {
         task.setId(id);
         taskRepository.save(task);
         return new ResponseEntity<>(id, null, HttpStatus.OK);

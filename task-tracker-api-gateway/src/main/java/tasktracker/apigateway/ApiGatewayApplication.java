@@ -6,6 +6,7 @@ import org.springframework.cloud.gateway.route.RouteLocator;
 import org.springframework.cloud.gateway.route.builder.RouteLocatorBuilder;
 import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
 
 @EnableEurekaClient
 @SpringBootApplication
@@ -20,6 +21,9 @@ public class ApiGatewayApplication {
         return builder.routes()
                 .route(r -> r.path("/tasks-app/api/**")
                         .uri("lb://task-tracker-application"))
+                .route(r -> r.path("/temp")
+                        .filters(rw -> rw.setPath("/pmet"))
+                        .uri("http://127.0.0.1:9000"))
                 .build();
     }
 

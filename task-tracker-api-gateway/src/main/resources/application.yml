@@ -4,6 +4,7 @@ spring:
   application:
     name: api-gateway
 
+
 eureka:
   client:
     serviceUrl:

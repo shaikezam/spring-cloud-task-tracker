@@ -18,4 +18,4 @@ Delete All Images
 
 Run the app
 
-* `http://localhost:4000`
+* `http://localhost:8000`
